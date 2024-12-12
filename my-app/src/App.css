@@ -1,0 +1,867 @@
+/* Global Reset and Body */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+}
+
+/* Main Layout */
+.main-layout {
+  display: flex;
+  min-height: 100vh;
+  padding: 20px;
+  margin-left: 250px;
+  /* Adjust content area to avoid overlap */
+}
+
+.content-area {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f4f4f9;
+  height: 100vh;
+  /* Ensure content area takes full height */
+  overflow-x: hidden;
+  /* Prevent horizontal scroll */
+  transition: margin-left 0.3s ease;
+  /* Smooth transition for mobile collapse */
+}
+
+/* Sidebar Styling */
+.sidebar-container {
+  width: 250px;
+  background-color: #2D3748;
+  color: white;
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+  /* Keep the sidebar fixed on the left */
+  top: 0;
+  left: 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  overflow-y: auto;
+  /* To ensure the sidebar content scrolls if needed */
+}
+
+.sidebar-title {
+  font-size: 1.875rem;
+  text-align: center;
+  color: #F7FAFC;
+  margin-bottom: 20px;
+}
+
+.sidebar-nav {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 15px;
+}
+
+.sidebar-link {
+  display: block;
+  padding: 12px 20px;
+  font-size: 1.125rem;
+  color: #E2E8F0;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.sidebar-link:hover {
+  background-color: #4A5568;
+  color: white;
+}
+
+.sidebar-link.active {
+  background-color: #3182CE;
+  color: white;
+}
+
+/* Footer Styling */
+.footer-container {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-container h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-layout {
+    flex-direction: column;
+    /* Stack sidebar and content vertically */
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .sidebar-container {
+    width: 200px;
+    /* Reduce width for smaller screens */
+    position: static;
+    /* Make the sidebar static on smaller screens */
+    box-shadow: none;
+    /* Remove shadow */
+  }
+
+  .content-area {
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .sidebar-link {
+    font-size: 1rem;
+  }
+
+  .sidebar-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar-container {
+    width: 100%;
+  }
+
+  .sidebar-nav li {
+    margin-bottom: 10px;
+  }
+
+  .sidebar-link {
+    font-size: 0.9rem;
+  }
+
+  .content-area {
+    margin-left: 0;
+    /* Full width content on mobile */
+  }
+}
+
+/* Styling for Add Product Page */
+.add-product {
+  width: 100%;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.add-product-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Input Fields Styling */
+.input-field {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  background-color: #fff;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #3182CE;
+}
+
+.error-message {
+  color: #E53E3E;
+  font-size: 0.875rem;
+  margin-bottom: 15px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #3182CE;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #2B6CB0;
+}
+
+.submit-button:focus {
+  outline: none;
+}
+
+textarea.input-field {
+  height: 150px;
+  resize: vertical;
+}
+
+/* Sign-up or Login Styles */
+.sign-up-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f9;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar and Sidebar Styles */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #333;
+  color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar Container */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #333;
+  color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-logo {
+  height: 50px;
+  /* Adjust logo size */
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+}
+
+.navbar-links li {
+  margin-left: 20px;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-links a:hover {
+  background-color: #4A5568;
+}
+
+.navbar-links.navbar-right {
+  margin-left: auto;
+  /* Push login/signup links to the right */
+}
+
+/* For Authenticated User */
+.navbar-links li a.logout {
+  background-color: #3182CE;
+}
+
+.navbar-links li a.logout:hover {
+  background-color: #2B6CB0;
+}
+
+/* Active Link */
+.navbar-links li a.active {
+  background-color: #3182CE;
+  color: white;
+}
+
+.navbar-links li a.active:hover {
+  background-color: #2B6CB0;
+}
+
+/* Product List Container */
+.product-list-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+/* Product List Title */
+.product-list-title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Product Search Box */
+.product-search-box {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  background-color: #fff;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.product-search-box:focus {
+  outline: none;
+  border-color: #3182CE;
+}
+
+/* Product Table Styling */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.product-table-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #3182CE;
+  color: white;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
+.product-table-header span {
+  flex: 1;
+  text-align: center;
+}
+
+/* Product Table Rows */
+.product-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  margin: 5px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.product-row span {
+  flex: 1;
+  text-align: center;
+}
+
+/* Delete Button Styling */
+.delete-button {
+  padding: 8px 12px;
+  background-color: #E53E3E;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #C53030;
+}
+
+/* Update Link Styling */
+.update-link {
+  padding: 8px 12px;
+  background-color: #3182CE;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.update-link:hover {
+  background-color: #2B6CB0;
+}
+
+/* No Results Styling */
+.no-results {
+  font-size: 1.5rem;
+  text-align: center;
+  color: #E53E3E;
+  margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .product-table-header {
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .product-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .product-row span {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .delete-button,
+  .update-link {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+
+/* Styling for Login Page */
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.login-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  background-color: #fff;
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: #3182CE;
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #3182CE;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #2B6CB0;
+}
+
+.login-button:focus {
+  outline: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-container {
+    padding: 30px;
+  }
+
+  .login-input {
+    font-size: 1rem;
+  }
+
+  .login-button {
+    font-size: 1rem;
+  }
+}
+
+/* Styling for Sign-Up Page */
+.sign-up-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  background-color: #f4f4f9;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.sign-up-title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.sign-up-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  background-color: #fff;
+}
+
+.sign-up-input:focus {
+  outline: none;
+  border-color: #3182CE;
+}
+
+.sign-up-button {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  background-color: #3182CE;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sign-up-button:hover {
+  background-color: #2B6CB0;
+}
+
+.sign-up-button:focus {
+  outline: none;
+}
+
+/* Error Messages Styling */
+.error-message {
+  color: #E53E3E;
+  font-size: 0.875rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sign-up-container {
+    padding: 15px;
+  }
+
+  .sign-up-input {
+    font-size: 1rem;
+  }
+
+  .sign-up-button {
+    font-size: 1rem;
+  }
+
+  .sign-up-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* Styling for the Faculty Component */
+.faculty-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.faculty-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.faculty-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  border-color: #3182CE;
+  outline: none;
+}
+
+.submit-button {
+  padding: 12px;
+  background-color: #3182CE;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #2B6CB0;
+}
+
+.faculty-info {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.faculty-info h3 {
+  margin-bottom: 15px;
+}
+
+.faculty-info p {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.faculty-info strong {
+  font-weight: bold;
+}
+
+/* Faculty Details Table Styling */
+.faculty-table-container {
+  width: 90%;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.faculty-table-title {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.faculty-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.faculty-table th,
+.faculty-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+.faculty-table th {
+  background-color: #3182ce;
+  color: white;
+}
+
+.faculty-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.faculty-table tbody tr:hover {
+  background-color: #e6f0ff;
+}
+
+.faculty-table td {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* RoleSelection.css */
+
+/* Container for all the role boxes */
+.role-selection-container {
+  display: flex;
+  justify-content: center;
+  /* Center the role boxes horizontally */
+  gap: 20px;
+  /* Add space between the role boxes */
+  padding: 20px;
+  flex-wrap: wrap;
+  /* Ensure it wraps on smaller screens */
+  margin-top: 40px;
+}
+
+/* Common styles for all role boxes */
+.role-box {
+  width: 280px;
+  /* Set a fixed width for the role boxes */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Slight shadow for depth */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.role-box:hover {
+  transform: translateY(-10px);
+  /* Hover effect to lift the box */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  /* Darker shadow on hover */
+}
+
+/* Styles specific to the Student Role Box */
+.student {
+  background-color: #e6f7ff;
+  /* Light blue background for student */
+  border: 2px solid #3399ff;
+  /* Blue border */
+}
+
+.student .role-title {
+  color: #3399ff;
+  /* Blue text */
+}
+
+.student .role-description {
+  color: #666666;
+  /* Light gray text */
+}
+
+/* Styles specific to the Teacher Role Box */
+.teacher {
+  background-color: #fff7e6;
+  /* Light yellow background for teacher */
+  border: 2px solid #ffcc00;
+  /* Yellow border */
+}
+
+.teacher .role-title {
+  color: #ffcc00;
+  /* Yellow text */
+}
+
+.teacher .role-description {
+  color: #666666;
+  /* Light gray text */
+}
+
+/* Styles specific to the Admin Role Box */
+.admin {
+  background-color: #f2e6ff;
+  /* Light purple background for admin */
+  border: 2px solid #9933cc;
+  /* Purple border */
+}
+
+.admin .role-title {
+  color: #9933cc;
+  /* Purple text */
+}
+
+.admin .role-description {
+  color: #666666;
+  /* Light gray text */
+}
+
+/* Optional: Make role boxes stack on smaller screens */
+@media (max-width: 768px) {
+  .role-selection-container {
+    flex-direction: column;
+    align-items: center;
+    /* Center boxes vertically on small screens */
+  }
+}
+
+/* NotFound.css */
+.notfound-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #f7f7f7;
+  font-family: Arial, sans-serif;
+}
+
+.notfound-title {
+  font-size: 100px;
+  font-weight: bold;
+  color: #e74c3c;
+  margin: 0;
+}
+
+.notfound-message {
+  font-size: 20px;
+  color: #333;
+  margin: 20px 0;
+}
+
+.notfound-link {
+  font-size: 18px;
+  color: #3498db;
+  text-decoration: none;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: 2px solid #3498db;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.notfound-link:hover {
+  background-color: #3498db;
+  color: #fff;
+}
